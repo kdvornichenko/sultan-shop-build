@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		font-family: 'Inter', sans-serif;
+	}
+
+	input[type='number']::-webkit-outer-spin-button,
+	input[type='number']::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+	}
+
+	input[type='number'],
+	input[type='number']:hover,
+	input[type='number']:focus {
+		appearance: none;
+		-moz-appearance: textfield;
+	}
+}
+
+@layer components {
+	html {
+		@apply overflow-x-hidden scroll-smooth;
+	}
+
+	// Хлебные крошки
+	.breadcrumbs {
+		@apply flex items-center text-sx font-light md:text-xs xl:text-sm;
+		& > span:last-child {
+			@apply text-slate-700 opacity-50;
+			& > svg {
+				@apply hidden;
+			}
+		}
+		& > span:first-child {
+			& > a {
+				@apply ml-0;
+			}
+		}
+	}
+
+	h1.default-h1 {
+		@apply text-xl font-medium uppercase sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
+	}
+
+	// Кнопки
+	.btn-header {
+		@apply flex  h-15 items-center justify-center gap-3 rounded-button bg-orange-500  font-bold text-white transition hover:bg-orange-700 md:w-36 lg:w-40 xl:w-44 2xl:w-50;
+	}
+	.btn-header-mobile {
+		@apply flex h-10 flex-row-reverse items-center justify-center gap-1.5 text-xs font-semibold text-slate-700;
+	}
+	.btn-tocard {
+		@apply flex h-11 items-center justify-center gap-3 rounded-button bg-orange-500 px-3 text-[10px] font-bold tracking-widest text-white transition enabled:hover:bg-orange-700 disabled:cursor-not-allowed disabled:bg-orange-200 lg:px-6;
+		& > div {
+			@apply sx:max-sm:hidden;
+		}
+	}
+
+	// Инпуты
+	.input-search {
+		@apply flex w-full max-w-sx items-center justify-between rounded-searchInput bg-gray-300 p-2.5 text-primary;
+		& > input {
+			@apply w-3/4 border-none bg-transparent pl-2.5 outline-none;
+		}
+		& > div {
+			@apply flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-orange-500 text-white transition hover:bg-orange-700;
+		}
+	}
+	.input-search-mobile {
+		@apply relative flex w-1/2 flex-row-reverse items-center justify-center rounded-searchInput pl-2.5 text-sm text-primary;
+		& > input {
+			@apply mr-3 w-full border-none bg-transparent pl-2 pr-5 outline-none;
+			&::placeholder {
+				@apply text-center text-xs font-semibold text-slate-700 transition-all;
+			}
+			&:focus,
+			&:not(:placeholder-shown) {
+				@apply rounded-md border border-solid border-slate-700 border-opacity-20;
+			}
+			&:focus::placeholder {
+				@apply text-transparent;
+			}
+		}
+		& > div {
+			@apply absolute left-[20%] cursor-pointer items-center justify-center text-slate-700 transition-all;
+		}
+		&:has(input:not(:placeholder-shown), input:focus) div {
+			@apply left-[85%] sm:left-[90%];
+		}
+	}
+
+	// Фильтр сверху
+	.top-filter {
+		@apply hidden justify-between gap-1 text-center text-xs text-slate-700 lg:flex xl:text-sm;
+		& > label {
+			@apply relative cursor-pointer py-2 px-4 [&:has(input:checked)>span]:bg-gray-300;
+			& > span:first-child {
+				@apply relative z-10 select-none whitespace-pre-line;
+			}
+			& > input {
+				@apply absolute top-0 left-0 bottom-0 right-0 m-auto h-0 opacity-0;
+			}
+			& > span:last-child {
+				@apply absolute top-0 left-0 bottom-0 right-0 z-0 m-auto block h-full w-full rounded-lg bg-white shadow-md;
+			}
+		}
+	}
+
+	// Сайдбар в каталоге
+	.catalog-sidebar {
+		h4 {
+			@apply font-medium;
+		}
+		.price-range {
+			@apply max-w-[100px] rounded-[100px] bg-orange-gradient py-1 px-3 text-center text-xs font-light text-slate-700 focus:border-none focus:outline-none;
+		}
+
+		.manufacturers-filter {
+			@apply flex select-none flex-col;
+			& > label {
+				@apply flex max-w-[200px] cursor-pointer items-center rounded-md py-1 pl-2 text-sm text-slate-700 hover:bg-gray-300;
+				& > input {
+					@apply mr-2;
+				}
+				& > span:last-child {
+					@apply ml-1.5 text-[10px] leading-[15px];
+				}
+			}
+		}
+
+		.sidebar-filter {
+			@apply mt-4 flex flex-col;
+			& > label {
+				@apply flex max-w-[220px] cursor-pointer select-none flex-row-reverse justify-end gap-2 rounded-md py-1 pl-2 text-sm text-slate-700 hover:bg-gray-300;
+				& > span:last-child {
+					@apply hidden;
+				}
+			}
+		}
+	}
+
+	// Счетчик
+	.counter {
+		@apply flex select-none items-center gap-1 text-sm font-medium text-slate-700;
+		& > button {
+			@apply rounded-full bg-orange-gradient py-1 px-3.5 text-xs font-light transition;
+		}
+		& > input {
+			@apply w-10 rounded-full border-none text-center outline-none;
+			&:focus {
+				@apply ring-1 ring-orange-500;
+			}
+		}
+	}
+
+	// Тень, закругление, центрирование контента элемента
+	.rounded-shadow-center {
+		@apply flex h-20 items-center justify-center rounded-xl shadow-md;
+	}
+
+	// Форма добавления/удаления
+	form {
+		@apply flex flex-col gap-2 max-md:text-sm;
+		& > div {
+			@apply flex items-center gap-6;
+			& > label {
+				@apply w-full max-w-[170px] max-md:max-w-[120px];
+			}
+			& > input,
+			& > textarea {
+				@apply w-full rounded-md border-2 border-gray-300 pl-1.5 outline-none transition;
+				&:focus {
+					@apply border-slate-700;
+				}
+			}
+			& input[type='radio'] {
+				@apply mr-1;
+			}
+			& > details {
+				.summary-elem {
+					@apply flex items-center gap-2 text-sm text-primary;
+					& > input[type='text'] {
+						@apply rounded-md border border-slate-700 px-2;
+					}
+				}
+			}
+		}
+	}
+
+	// Пагинация
+	.pagination {
+		@apply mt-4 flex w-full items-center justify-center gap-6 text-sm font-medium text-slate-700 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12;
+		.previous,
+		.next {
+			@apply text-orange-500;
+		}
+		.disabled {
+			@apply text-orange-200;
+		}
+		.active {
+			@apply flex h-9 w-9 items-center justify-center rounded-full bg-orange-200;
+		}
+	}
+
+	// Футер
+	.footer {
+		@apply ml-[calc(50%-50vw)] mt-12 w-screen bg-slate-700 text-white md:mt-15 lg:mt-16 xl:mt-20 2xl:mt-24;
+		h4 {
+			@apply text-xl font-semibold;
+		}
+		ul {
+			@apply mt-6;
+			li {
+				@apply text-xs sm:text-sm;
+				& > a {
+					@apply transition hover:text-orange-700;
+				}
+			}
+			li:not(:first-child) {
+				@apply mt-5;
+			}
+		}
+
+		.svg-logo {
+			@apply p-1;
+		}
+
+		.footer-hide {
+			@apply hidden;
+		}
+
+		.footer-call-block {
+			@apply items-start font-light;
+		}
+	}
+}
