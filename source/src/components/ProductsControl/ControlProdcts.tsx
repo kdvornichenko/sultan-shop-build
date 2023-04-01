@@ -63,7 +63,7 @@ const ControlProdcts = () => {
 					className="px-4 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 max-sm:placeholder:text-xs md:w-80"
 				/>
 			</div>
-			<div className="px-4 pt-4 h-full max-h-[550px] overflow-y-auto border rounded-md border-gray-300">
+			<div className="px-8 pt-4 h-full max-h-[550px] overflow-y-auto border rounded-md border-gray-300">
 				<ol className="list-decimal list-outside">
 					{filteredProducts.map((item) => (
 						<li key={item.barcode}>
