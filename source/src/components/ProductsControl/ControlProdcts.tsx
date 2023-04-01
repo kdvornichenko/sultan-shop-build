@@ -64,7 +64,7 @@ const ControlProdcts = () => {
 				/>
 			</div>
 			<div className="px-8 pt-4 h-full max-h-[550px] overflow-y-auto border rounded-md border-gray-300">
-				<ol className="list-decimal">
+				<ol className="list-decimal list-inside">
 					{filteredProducts.map((item) => (
 						<li key={item.barcode}>
 							<div className="flex gap-3">
