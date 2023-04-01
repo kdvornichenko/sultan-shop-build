@@ -36,7 +36,7 @@ const Sidebar: FC<{
 				</div>
 				<div
 					className={
-						(isOpen ? 'h-[650px]' : 'max-md:h-0') +
+						(isOpen ? 'h-auto' : 'max-md:h-0') +
 						' ' +
 						'transition-[height] max-md:overflow-hidden md:h-auto'
 					}
